@@ -5,11 +5,9 @@
 @section('content')
 
     <div class="container">
-
+        Product list：<p>
 
         <div class="row">
- <!-- by this code show any product in in ths page -->
-
             @foreach($products as $product)
             <div class="col-sm-3 card hover">
                
@@ -26,7 +24,7 @@
                 
             @endforeach
 
-        </div><!-- End row -->
+        </div>
 
     </div>
 

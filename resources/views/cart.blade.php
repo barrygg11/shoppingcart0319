@@ -12,13 +12,14 @@
             <th style="width:10%">Price</th>
             <th style="width:8%">Quantity</th>
             <th style="width:22%" class="text-center">Subtotal</th>
+            <th style="width:8%">Action</th>
             <th style="width:10%"></th>
         </tr>
         </thead>
         <tbody>
 
         <?php $total = 0 ?>
-<!-- by this code session get all product that user chose -->
+
         @if(session('cart'))
             @foreach(session('cart') as $id => $details)
 
@@ -39,10 +40,8 @@
                     </td>
                     <td data-th="Subtotal" class="text-center">${{ $details['price'] * $details['quantity'] }}</td>
                     <td class="actions" data-th="">
-                    <!-- this button is to update card -->
                         <button class="btn btn-info btn-sm update-cart" data-id="{{ $id }}"><i class="fa fa-refresh"></i></button>
-                       <!-- this button is for update card -->
-                        <button class="btn btn-danger btn-sm remove-from-cart delete" data-id="{{ $id }}"><i class="fa fa-trash-o"></i>bhh</button>
+                        <button class="btn btn-danger btn-sm remove-from-cart delete" data-id="{{ $id }}"><i class="fa fa-trash-o"></i>Delete</button>
                     </td>
                 </tr>
             @endforeach
@@ -52,12 +51,16 @@
         <tfoot>
        
         <tr>
-            <td><a href="{{ url('/') }}" class="btn btn-warning"><i class="fa fa-angle-left"></i> Continue Shopping</a></td>
+            <td><a href="{{ url('/barryshop') }}" class="btn btn-warning">Continue Shopping</a></td>
             <td colspan="2" class="hidden-xs"></td>
             <td class="hidden-xs text-center"><strong>Total ${{ $total }}</strong></td>
         </tr>
         </tfoot>
     </table>
+    <p>
+        <tr>
+            <td><a href="{{ url('/pyment') }}" class="btn btn-warning">Confirm Pyment</a></td>
+        </tr>
 
 @endsection
 
@@ -66,7 +69,7 @@
 
 
     <script type="text/javascript">
-// this function is for update card
+
         $(".update-cart").click(function (e) {
            e.preventDefault();
            var ele = $(this);

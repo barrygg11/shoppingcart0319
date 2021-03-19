@@ -27,7 +27,6 @@
 
                     <i class="fa fa-shopping-cart" aria-hidden="true"></i>
                      Cart
-                    <!-- this code count product of choose tha user choose -->
 
                     <span class="badge badge-pill badge-danger">{{ count(session('cart')) }}</span>
                 </a>
@@ -43,7 +42,7 @@
         </div>
 
                 @endif
-       <!-- if user dont choose any product -->
+
                 @else
                       
                     <a href="" class="btn text-light bg-warning mt-3 mb-3" role="button">

@@ -7,14 +7,13 @@ use App\Models\Product;
 
 class ProductsController extends Controller
 {
-    public function index()  // get all data from database
+    public function index()
     {
         $products = Product::all();
    
-        return view('products', compact('products'));  //  show all data in page of products.blade.php
+        return view('products', compact('products'));
     }
    
-    // this function is to show cart of product because we wanna show result of choose product by user in this page
     public function cart()  
     {
         return view('cart');  
@@ -22,7 +21,7 @@ class ProductsController extends Controller
    
     
    
-    public function addToCart($id) // by this function we add product of choose in card
+    public function addToCart($id)
     {
         $product = Product::find($id);
    
@@ -31,13 +30,9 @@ class ProductsController extends Controller
             abort(404);
    
         }
-   // what is Session:
-   //Sessions are used to store information about the user across the requests.
-   // Laravel provides various drivers like file, cookie, apc, array, Memcached, Redis, and database to handle session data. 
-   // so cause write the below code in controller and tis code is fix
+
         $cart = session()->get('cart');  
    
-        // if cart is empty then this the first product
         if(!$cart) {
    
             $cart = [
@@ -54,18 +49,16 @@ class ProductsController extends Controller
             return redirect()->back()->with('success', 'added to cart successfully!');
         }
    
-        // if cart not empty then check if this product exist then increment quantity
         if(isset($cart[$id])) {
    
             $cart[$id]['quantity']++;
    
-            session()->put('cart', $cart); // this code put product of choose in cart
+            session()->put('cart', $cart);
    
             return redirect()->back()->with('success', 'Product added to cart successfully!');
    
         }
    
-        // if item not exist in cart then add to cart with quantity = 1
         $cart[$id] = [
             "name" => $product->name,
             "quantity" => 1,
@@ -73,12 +66,11 @@ class ProductsController extends Controller
             "photo" => $product->photo
         ];
    
-        session()->put('cart', $cart); // this code put product of choose in cart
+        session()->put('cart', $cart);
    
         return redirect()->back()->with('success', 'Product added to cart successfully!');
     }
    
-    // update product of choose in cart
     public function update(Request $request)
     {
         if($request->id and $request->quantity)
@@ -93,7 +85,6 @@ class ProductsController extends Controller
         }
     }
    
-    // delete or remove product of choose in cart
     public function remove(Request $request)
     {
         if($request->id) {
