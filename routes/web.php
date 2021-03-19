@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProductsController;
+use App\Http\Controllers\PymentsController;
 
 Route::get('/barryshop', 'App\Http\Controllers\ProductsController@index');
 
@@ -24,13 +25,5 @@ Route::get('/login', function () {
 })->name('login.home');
 
 
-
-
-
-Route::get('/', 'PageController@index')->middleware('userAuth');
-
-Route::post('login', 'UserController@login');
-
-Route::get('login', 'UserController@showLoginPage');
-
-Route::get('logout', 'UserController@logout');
+Route::resource('views', PymentsController::class);
+Route::get('/info', [PymentsController::class, 'info'])->name('info.home');

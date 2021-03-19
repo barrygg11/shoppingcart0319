@@ -26,7 +26,7 @@
                 <a href="{{ url('cart') }}" class="btn btn-primary  mt-3 mb-3 btn-block">
 
                     <i class="fa fa-shopping-cart" aria-hidden="true"></i>
-                     Cart
+                     購物車
 
                     <span class="badge badge-pill badge-danger">{{ count(session('cart')) }}</span>
                 </a>
@@ -47,7 +47,7 @@
                       
                     <a href="" class="btn text-light bg-warning mt-3 mb-3" role="button">
                     <i class="fa fa-shopping-cart" aria-hidden="true"></i>
-                    Cart Empty
+                    購物車（空）
                     </a> 
 
                     @endif

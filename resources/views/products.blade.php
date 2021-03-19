@@ -5,7 +5,7 @@
 @section('content')
 
     <div class="container">
-        Product list：<p>
+        <h1>商品表：</h1><p>
 
         <div class="row">
             @foreach($products as $product)
@@ -15,9 +15,9 @@
                 <div class="card-body">
                        <h4>{{ $product->name }}</h4>
                             
-                            <p><strong>Price: </strong> {{ $product->price }}$</p>
+                            <p><strong>價錢: </strong> {{ $product->price }}$</p>
                             <p class="btn-holder">
-                            <a href="{{ url('add-to-cart/'.$product->id) }}" class="btn btn-block text-center text-light" role="button">Add to cart</a> </p>
+                            <a href="{{ url('add-to-cart/'.$product->id) }}" class="btn btn-block text-center text-light" role="button">新增至購物車</a> </p>
                 </div>
             </div>
                     
@@ -36,7 +36,7 @@
         bottom:-10
     }
     .card:hover a{
-        background:green;
+        background:rgb(13, 0, 128);
         transition: 1.5s ease;
         transform: translate(-.1%, -.1%);
         

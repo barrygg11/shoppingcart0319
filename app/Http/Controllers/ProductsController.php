@@ -46,7 +46,7 @@ class ProductsController extends Controller
    
             session()->put('cart', $cart);
    
-            return redirect()->back()->with('success', 'added to cart successfully!');
+            return redirect()->back()->with('success', '成功新增至購物車！！！');
         }
    
         if(isset($cart[$id])) {
@@ -55,7 +55,7 @@ class ProductsController extends Controller
    
             session()->put('cart', $cart);
    
-            return redirect()->back()->with('success', 'Product added to cart successfully!');
+            return redirect()->back()->with('success', '成功將商品新增至購物車！！！');
    
         }
    
@@ -68,7 +68,7 @@ class ProductsController extends Controller
    
         session()->put('cart', $cart);
    
-        return redirect()->back()->with('success', 'Product added to cart successfully!');
+        return redirect()->back()->with('success', '成功將商品新增至購物車！！！');
     }
    
     public function update(Request $request)
@@ -81,7 +81,7 @@ class ProductsController extends Controller
    
             session()->put('cart', $cart);
    
-            session()->flash('success', 'Cart updated successfully');
+            session()->flash('success', '購物車更新成功');
         }
     }
    
@@ -98,7 +98,7 @@ class ProductsController extends Controller
                 session()->put('cart', $cart);
             }
    
-            session()->flash('success', 'Product removed successfully');
+            session()->flash('success', '商品刪除成功');
         }
     }
 }

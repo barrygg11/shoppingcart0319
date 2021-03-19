@@ -1,6 +1,6 @@
 @extends('layout')
 
-@section('title', 'Cart')
+@section('title', '購物車')
 
 @section('content')
 
@@ -8,11 +8,11 @@
     <table id="cart" class="table table-hover table-condensed">
         <thead>
         <tr>
-            <th style="width:50%">Product</th>
-            <th style="width:10%">Price</th>
-            <th style="width:8%">Quantity</th>
-            <th style="width:22%" class="text-center">Subtotal</th>
-            <th style="width:8%">Action</th>
+            <th style="width:50%">商品</th>
+            <th style="width:10%">價格</th>
+            <th style="width:8%">數量</th>
+            <th style="width:22%" class="text-center">小計</th>
+            <th style="width:8%">操作</th>
             <th style="width:10%"></th>
         </tr>
         </thead>
@@ -41,7 +41,7 @@
                     <td data-th="Subtotal" class="text-center">${{ $details['price'] * $details['quantity'] }}</td>
                     <td class="actions" data-th="">
                         <button class="btn btn-info btn-sm update-cart" data-id="{{ $id }}"><i class="fa fa-refresh"></i></button>
-                        <button class="btn btn-danger btn-sm remove-from-cart delete" data-id="{{ $id }}"><i class="fa fa-trash-o"></i>Delete</button>
+                        <button class="btn btn-danger btn-sm remove-from-cart delete" data-id="{{ $id }}"><i class="fa fa-trash-o"></i>刪除</button>
                     </td>
                 </tr>
             @endforeach
@@ -51,15 +51,15 @@
         <tfoot>
        
         <tr>
-            <td><a href="{{ url('/barryshop') }}" class="btn btn-warning">Continue Shopping</a></td>
+            <td><a href="{{ url('/barryshop') }}" class="btn btn-warning">繼續購物</a></td>
             <td colspan="2" class="hidden-xs"></td>
-            <td class="hidden-xs text-center"><strong>Total ${{ $total }}</strong></td>
+            <td class="hidden-xs text-center"><strong>總金額 ${{ $total }}</strong></td>
         </tr>
         </tfoot>
     </table>
     <p>
         <tr>
-            <td><a href="{{ url('/pyment') }}" class="btn btn-warning">Confirm Pyment</a></td>
+            <td><a href="{{ url('/pyment') }}" class="btn btn-warning">結帳畫面</a></td>
         </tr>
 
 @endsection
@@ -85,7 +85,7 @@
         $(".remove-from-cart").click(function (e) {
             e.preventDefault();
             var ele = $(this);
-            if(confirm("Are you sure")) {
+            if(confirm("確定要刪除此商品嗎？")) {
                 $.ajax({
                     url: '{{ url('remove-from-cart') }}',
                     method: "DELETE",
